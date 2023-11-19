@@ -5,13 +5,18 @@ import time
 from pyrogram import Client, filters
 from pytgcalls import PyTgCalls
 from config import SESSION, API_ID, API_HASH, HNDLR
-
+import config
 contact_filter = filters.create(
     lambda _, __, message: (message.from_user and message.from_user.is_contact)
     or message.outgoing
 )
 
-bot = Client(SESSION, API_ID, API_HASH, plugins=dict(root="Rabbit/Modules"))
+bot = Client(
+    "bunny",
+    config.API_ID,
+    config.API_HASH,
+    session_string=str(config.SESSION),
+)
 call_py = PyTgCalls(bot)
 
 
