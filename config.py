@@ -1,21 +1,31 @@
 from os import getenv
 
 from dotenv import load_dotenv
+import os
+import asyncio
+import sys
+import time
+
+from dotenv import load_dotenv
 
 load_dotenv()
 
-# API_IDS
-API_ID = int(getenv("API_ID")) # API_ID get it from my.telegram.org
-API_HASH = getenv("API_HASH") # API_HASH get it from my.telegram.org
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
+SESSION = os.getenv("SESSION")
+HNDLR = os.getenv("HNDLR", ".")
+SUDO_USERS = list(map(int, os.getenv("SUDO_USERS").split()))
+ALIVE_PIC = os.getenv("ALIVE_PIC", "")
+ALIVE_MSG = os.getenv("ALIVE_MSG", "")
+PING_MSG = os.getenv("PING_MSG", "")
+LOGS_CHANNEL = os.getenv("LOGS_CHANNEL", None)
 
-# DATABASES
-MONGO_URL = getenv("MONGO_URL", None)
+__version__ = "v0.1"
 
-# SESSION
-SESSION = getenv("SESSION", None)
+if os.path.exists(".env"):
+    load_dotenv(".env")
+    
+if os.path.exists(".env"):
+    load_dotenv(".env")
 
-# TOKEN
-BOT_TOKEN = getenv("BOT_TOKEN", None)
-
-# IMAGES
-ALIVE_PIC = getenv("ALIVE_PIC", None)
+#_______________________________________________________________________________________________________________#
